@@ -19,7 +19,8 @@ class sorting_window:
         if sorting_type == "bubble":
             self._bubble_sort()
 
-        win.getMouse() # pause at the end (for now)
+        time.sleep(2.0)
+        self.win.close()
 
     def _bubble_sort(self):    
         n = len(self.number_list) - 1
@@ -29,7 +30,7 @@ class sorting_window:
                     self.number_list[j], self.number_list[j + 1] = self.number_list[j + 1], self.number_list[j]
                     self._redraw(j, j+1)
                 n-=1
-                time.sleep(0.05)
+                time.sleep(0.00)
 
     # ------- HELP METHODS -------
 
@@ -54,8 +55,3 @@ class sorting_window:
         temp_white_line.setWidth(5)
         temp_white_line.setOutline('white')
         temp_white_line.draw(self.win)
-
-    
-    
-
-
