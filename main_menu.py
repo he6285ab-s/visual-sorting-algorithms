@@ -6,6 +6,7 @@ def __main__():
         print("\nChoose an algorithm to sort with!")
         print("1: Bubble Sort")
         print("2: Insertion Sort")
+        print("3: Selection Sort")
         choice = input("Use algorithm nr: ")
 
         if choice == "1":
@@ -15,6 +16,10 @@ def __main__():
         elif choice == "2":
             sorter = sort_win("Insertion Sort")
             sorter.loop("insertion")
+            del(sorter)
+        elif choice == "3":
+            sorter = sort_win("Selection Sort")
+            sorter.loop("selection")
             del(sorter)
         else:
             print("Invalid choice!")

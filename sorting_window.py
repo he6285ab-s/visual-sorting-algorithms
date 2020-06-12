@@ -23,6 +23,8 @@ class sorting_window:
             self._bubble_sort()
         elif sorting_type == "insertion":
             self._insertion_sort()
+        elif sorting_type == "selection":
+            self._selection_sort()
 
         time.sleep(2.0)
         self.win.close()
@@ -56,7 +58,38 @@ class sorting_window:
             self.number_list[j] = next_element
             self._redraw_line_completely(j, self.number_list[j])
 
-        print(self.number_list)
+    def _selection_sort(self):
+        """Performs a selection sort and redraws window for each step."""
+        # Loop over every element and set the sorted ones to color green.
+        for i in range(len(self.number_list)):
+            self._redraw_line_completely(i, self.number_list[i], 'green')
+            min_index = i
+            self._redraw_line_completely(min_index, self.number_list[min_index], 'red')
+
+            # Look for minimum value and set it to red
+            # and set value that's currently being checked to yellow
+            for j in range(i+1, len(self.number_list)):
+                self._redraw_line_completely(j, self.number_list[j], 'yellow')
+                time.sleep(0.05)
+
+                # Recolor and reset minimum if value being checked is smaller, 
+                # otherwise move on to the next one
+                if self.number_list[min_index] > self.number_list[j]:
+                    self._redraw_line_completely(min_index, self.number_list[min_index])
+                    min_index = j
+                    self._redraw_line_completely(j, self.number_list[j], 'red')
+                else:
+                    self._redraw_line_completely(j, self.number_list[j])
+
+            # Swap and redraw if smaller value than current value
+            # for current i has been found
+            if i != min_index:
+                self.number_list[i], self.number_list[min_index] = self.number_list[min_index], self.number_list[i]
+                self._redraw_line_completely(i, self.number_list[i], 'green')
+                self._redraw_line_completely(min_index, self.number_list[min_index])
+            else:
+                self._redraw_line_completely(i, self.number_list[i], 'green')
+            time.sleep(0.075)
 
     # ------- HELP METHODS -------
 
