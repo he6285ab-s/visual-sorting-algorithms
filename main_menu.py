@@ -1,4 +1,4 @@
-from sorting_window import sorting_window as sort_win
+from sorting import sorting
 
 def __main__():
     
@@ -10,15 +10,15 @@ def __main__():
         choice = input("Use algorithm nr: ")
 
         if choice == "1":
-            sorter = sort_win("Bubble Sort")
+            sorter = sorting("Bubble Sort")
             sorter.loop("bubble")
             del(sorter)
         elif choice == "2":
-            sorter = sort_win("Insertion Sort")
+            sorter = sorting("Insertion Sort")
             sorter.loop("insertion")
             del(sorter)
         elif choice == "3":
-            sorter = sort_win("Selection Sort")
+            sorter = sorting("Selection Sort")
             sorter.loop("selection")
             del(sorter)
         else:
