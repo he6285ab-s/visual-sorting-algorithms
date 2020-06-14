@@ -1,0 +1,5 @@
+BASE_LINE_COLOR = "white"
+BKG_COLOR = "black"
+CHECK_LINE_COLOR = "blue"
+SORTED_LINE_COLOR = "green"
+SEL_SORT_MIN_COLOR = "red"
