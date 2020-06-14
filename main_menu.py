@@ -8,6 +8,7 @@ def __main__():
         print("1: Bubble Sort")
         print("2: Insertion Sort")
         print("3: Selection Sort")
+        print("4: Quick Sort")
         choice = input("Use algorithm nr: ")
 
         if choice == "1":
@@ -19,6 +20,9 @@ def __main__():
         elif choice == "3":
             sorter = sorting("Selection Sort")
             sorter.loop("selection")
+        elif choice == "4":
+            sorter = sorting("Quick Sort")
+            sorter.loop("quick")
         else:
             print("Invalid choice!")
 

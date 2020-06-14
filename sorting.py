@@ -23,6 +23,9 @@ class sorting:
             self._insertion_sort()
         elif sorting_type == "selection":
             self._selection_sort()
+        elif sorting_type == "quick":
+            self._quick_sort(0, len(self.numbers) - 1)
+            print(self.numbers)
 
         time.sleep(2.0)
         self.win.close()
@@ -104,3 +107,40 @@ class sorting:
             else:
                 self.win.redraw_line(i, self.numbers[i], c.SORTED_LINE_COLOR)
             time.sleep(0.075)
+
+    def _quick_sort(self, low, high):
+        """Performs a quick sort on the list."""
+        # Since method is recursive, need to check this
+        # to find when recursion should end.
+        if low < high:
+        
+            index = self._partition(low, high)
+
+            # Recursively call on both halves
+            self._quick_sort(low, index - 1)
+            self._quick_sort(index + 1, high)
+        
+
+    def _partition(self, low, high):
+        """Partitions the array, using the last value as a pivot."""
+        i = low - 1
+        pivot = self.numbers[high]
+
+        for j in range(low, high):
+            # Increment partition index if value less/equal to pivot
+            # and swap the smaller/equal values to the left of partition index
+            if self.numbers[j] <= pivot:
+                i += 1
+                self.numbers[i], self.numbers[j] = self.numbers[j], self.numbers[i]
+                self.win.redraw_line(i, self.numbers[i])
+                self.win.redraw_line(j, self.numbers[j])
+                time.sleep(0.05)
+        self.numbers[i + 1], self.numbers[high] = (
+            self.numbers[high],
+            self.numbers[i + 1],
+        )
+        self.win.redraw_line(i+1, self.numbers[i+1])
+        self.win.redraw_line(high, self.numbers[high])
+        time.sleep(0.05)
+
+        return i + 1
