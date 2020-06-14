@@ -15,12 +15,12 @@ class window:
     def close(self):
         self.win.close()
 
-    def draw_list(self, list):
+    def draw_list(self, list, color=c.BASE_LINE_COLOR):
         """Draw's the entire list to the window."""
         for i, number in enumerate(list, 0):
             temp_line = Line(Point(i, 0), Point(i, number))
             temp_line.setWidth(5)
-            temp_line.setOutline(c.BASE_LINE_COLOR)
+            temp_line.setOutline(color)
             temp_line.draw(self.win)
 
     def redraw_line(self, index, value, color=c.BASE_LINE_COLOR):
