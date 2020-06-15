@@ -24,9 +24,12 @@ class sorting:
         elif sorting_type == "selection":
             self._selection_sort()
         elif sorting_type == "quick":
-            self._quick_sort(0, len(self.numbers) - 1)
+            self._quick_sort(
+                0, len(self.numbers) - 1
+            )  # need parameters due to recursive method
             self.win.draw_list(self.numbers, c.SORTED_LINE_COLOR)
-
+        elif sorting_type == "shell":
+            self._shell_sort()
         time.sleep(2.0)
         self.win.close()
 
@@ -148,3 +151,23 @@ class sorting:
         time.sleep(0.05)
 
         return i + 1
+
+    def _shell_sort(self):
+        n = len(self.numbers)
+        gap = n // 2
+
+        while gap > 0:
+            for i in range(gap, n):
+                temp = self.numbers[i]
+                j = i
+                while j >= gap and self.numbers[j - gap] > temp:
+                    self.numbers[j] = self.numbers[j - gap]
+                    self.win.redraw_line(j, self.numbers[j])
+                    j -= gap
+                self.numbers[j] = temp
+                self.win.redraw_line(j, self.numbers[j])
+                self.win.redraw_line(i, self.numbers[i])
+                time.sleep(0.05)
+            gap //= 2
+        
+        self.win.draw_list(self.numbers, 'green')

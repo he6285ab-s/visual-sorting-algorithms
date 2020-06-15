@@ -6,10 +6,11 @@ class window:
     """Handles the window and the drawing/redrawing of the lines representing numbers."""
 
     def __init__(self, title):
-        self.win = GraphWin(title=title, width=816, height=816)
+        # increased width with one pixel to fix uneven bars
+        self.win = GraphWin(title=title, width=809, height=816) 
         self.win.setCoords(
-            -1, -1, 101, 101
-        )  # bottom left is (-1, -1); top right is (100, 100)
+            -1, -1, 100, 101
+        )  # bottom left is (-1, -1); top right is (101, 101)
         self.win.setBackground(c.BKG_COLOR)
 
     def close(self):

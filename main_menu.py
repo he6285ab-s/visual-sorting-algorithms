@@ -9,6 +9,7 @@ def __main__():
         print("2: Insertion Sort")
         print("3: Selection Sort")
         print("4: Quick Sort")
+        print("5: Shell Sort")
         choice = input("Use algorithm nr: ")
 
         if choice == "1":
@@ -23,6 +24,9 @@ def __main__():
         elif choice == "4":
             sorter = sorting("Quick Sort")
             sorter.loop("quick")
+        elif choice == "5":
+            sorter = sorting("Shell Sort")
+            sorter.loop("shell")
         else:
             print("Invalid choice!")
 
