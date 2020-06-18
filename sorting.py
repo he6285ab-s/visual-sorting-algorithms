@@ -26,7 +26,7 @@ class sorting:
         elif sorting_type == "quick":
             self._quick_sort(
                 0, len(self.numbers) - 1
-            )  # need parameters due to recursive method
+            )  # need parameters due to recursive method 
             self.win.draw_list(self.numbers, c.SORTED_LINE_COLOR)
         elif sorting_type == "shell":
             self._shell_sort()
@@ -72,6 +72,7 @@ class sorting:
 
             self.numbers[j] = next_element
             self.win.redraw_line(j, self.numbers[j])
+        self.win.draw_list(self.numbers, c.SORTED_LINE_COLOR)
 
     def _selection_sort(self):
         """Performs a selection sort and redraws window for each step."""
@@ -112,7 +113,7 @@ class sorting:
             time.sleep(0.075)
 
     def _quick_sort(self, low, high):
-        """Performs a quick sort on the list."""
+        """Performs a quick sort on the list and redraws window for each step."""
         # Since method is recursive, need to check this
         # to find when recursion should end.
         if low < high:
@@ -153,6 +154,7 @@ class sorting:
         return i + 1
 
     def _shell_sort(self):
+        """Performs a shell sort on the list. No colors included: easier to read theory to understand it."""
         n = len(self.numbers)
         gap = n // 2
 
@@ -170,4 +172,4 @@ class sorting:
                 time.sleep(0.05)
             gap //= 2
         
-        self.win.draw_list(self.numbers, 'green')
+        self.win.draw_list(self.numbers, c.SORTED_LINE_COLOR)
